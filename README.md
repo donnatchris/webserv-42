@@ -415,5 +415,312 @@ In Webserv, you will use `errno` to:
 
 ---
 
-Souhaites-tu que je t’en prépare d’autres (par exemple `socket()`, `bind()`, `listen()`, etc.) ?
+Parfait ! Voici la suite de tes fiches Markdown pour le projet `webserv`, toujours au format C++98, avec explications précises et ciblées :
+
+---
+
+### `fork()`
+
+```cpp
+#include <unistd.h>
+
+pid_t fork(void);
+```
+
+* **Returns**:
+
+  * `> 0` in the **parent process** (contains the child’s PID)
+  * `0` in the **child process**
+  * `-1` on failure, with `errno` set
+
+`fork()` creates a new process by duplicating the calling process. The new child process receives a copy of the parent's memory and file descriptors, allowing for independent execution.
+
+### Key Use Cases
+
+* Creating a CGI subprocess in Webserv.
+* Separating request processing logic per client.
+* Managing resources in child processes.
+
+### How It Works
+
+`fork()` duplicates the process:
+
+* Parent and child continue from the same instruction.
+* Child gets a new PID and its own memory space.
+* Both share file descriptors unless changed after.
+
+### Example Usage
+
+```cpp
+#include <unistd.h>
+#include <iostream>
+
+int main()
+{
+    pid_t pid = fork();
+    if (pid == -1)
+        std::cerr << "Fork failed\n";
+    else if (pid == 0)
+        std::cout << "Child process\n";
+    else
+        std::cout << "Parent process (child PID: " << pid << ")\n";
+    return 0;
+}
+```
+
+### Error Handling
+
+* `ENOMEM`: Not enough memory to create the child.
+* `EAGAIN`: Limit on number of processes reached.
+
+### In Webserv
+
+In Webserv, you will use `fork()` to:
+✅ **Spawn a new process** to handle CGI execution
+✅ **Avoid blocking the main server thread** during long-running scripts
+✅ **Safely isolate CGI behavior from the main server logic**
+
+---
+
+### `socketpair()`
+
+```cpp
+#include <sys/socket.h>
+
+int socketpair(int domain, int type, int protocol, int sv[2]);
+```
+
+* **domain**: Address family (typically `AF_UNIX`)
+* **type**: Socket type (`SOCK_STREAM` or `SOCK_DGRAM`)
+* **protocol**: Usually `0`
+* **sv**: Array of two integers, filled with the file descriptors for the connected sockets
+
+**Returns**: `0` on success, `-1` on error.
+
+`socketpair()` creates a pair of connected sockets. It is mainly used for interprocess communication (IPC) without needing a network interface.
+
+### Key Use Cases
+
+* Full-duplex communication between parent and child processes.
+* Replacing pipes when bidirectional data flow is needed.
+
+### How It Works
+
+`socketpair()` creates two file descriptors that behave like connected sockets. Each end can read/write to the other.
+
+### Example Usage
+
+```cpp
+#include <sys/socket.h>
+#include <unistd.h>
+#include <iostream>
+
+int main()
+{
+    int sv[2];
+    socketpair(AF_UNIX, SOCK_STREAM, 0, sv);
+    pid_t pid = fork();
+
+    if (pid == 0) {
+        write(sv[1], "Hello from child", 16);
+    } else {
+        char buffer[128];
+        read(sv[0], buffer, sizeof(buffer));
+        std::cout << "Parent received: " << buffer << std::endl;
+    }
+    return 0;
+}
+```
+
+### Error Handling
+
+* `EAFNOSUPPORT`: Address family not supported
+* `EMFILE`: Too many file descriptors
+* `EFAULT`: Invalid `sv` pointer
+
+### In Webserv
+
+In Webserv, you will use `socketpair()` to:
+✅ **Enable bidirectional communication with CGI processes**
+✅ **Use a more robust alternative to `pipe()` when you need read/write both ways**
+✅ **Avoid temporary files or named pipes by using anonymous connected sockets**
+
+---
+
+### `htons()`
+
+```cpp
+#include <arpa/inet.h>
+
+uint16_t htons(uint16_t hostshort);
+```
+
+* **hostshort**: 16-bit number in host byte order
+
+**Returns**: 16-bit number in **network byte order** (big-endian)
+
+`htons()` (host to network short) converts a 16-bit number from the host's byte order to network byte order, which is required before sending data over a socket.
+
+### Key Use Cases
+
+* Port numbers in `sockaddr_in` structs (e.g., `bind()`).
+* Ensuring cross-platform compatibility in networking.
+
+### How It Works
+
+Different architectures store numbers in different byte orders. Network byte order is always **big-endian**.
+
+### Example Usage
+
+```cpp
+#include <arpa/inet.h>
+#include <iostream>
+
+int main()
+{
+    uint16_t port = 8080;
+    uint16_t net_port = htons(port);
+    std::cout << "Network byte order: " << net_port << std::endl;
+    return 0;
+}
+```
+
+### In Webserv
+
+In Webserv, you will use `htons()` to:
+✅ **Convert server port numbers** before binding sockets
+✅ **Ensure consistency across platforms** with different endianness
+✅ **Avoid hard-to-debug network errors caused by byte mismatches**
+
+---
+
+### `htonl()`
+
+```cpp
+#include <arpa/inet.h>
+
+uint32_t htonl(uint32_t hostlong);
+```
+
+* **hostlong**: 32-bit number in host byte order
+
+**Returns**: 32-bit number in **network byte order**
+
+`htonl()` (host to network long) is the 32-bit version of `htons()`, used for IP addresses or other long integers in protocols.
+
+### Key Use Cases
+
+* IP addresses in raw sockets or protocols.
+* Any 32-bit fields that must follow network standards.
+
+### Example Usage
+
+```cpp
+#include <arpa/inet.h>
+#include <iostream>
+
+int main()
+{
+    uint32_t ip = 0xC0A80001; // 192.168.0.1
+    uint32_t net_ip = htonl(ip);
+    std::cout << "Network order IP: " << net_ip << std::endl;
+    return 0;
+}
+```
+
+### In Webserv
+
+In Webserv, you will use `htonl()` to:
+✅ **Convert 32-bit fields to network byte order**
+✅ **Prepare raw IP data for transmission if needed**
+✅ **Ensure protocol correctness across systems**
+
+---
+
+### `ntohs()`
+
+```cpp
+#include <arpa/inet.h>
+
+uint16_t ntohs(uint16_t netshort);
+```
+
+* **netshort**: 16-bit number in network byte order
+
+**Returns**: 16-bit number in host byte order
+
+`ntohs()` (network to host short) converts port numbers received from the network into the host's byte order.
+
+### Key Use Cases
+
+* Reading port numbers from socket structs.
+* Decoding incoming data correctly.
+
+### Example Usage
+
+```cpp
+#include <arpa/inet.h>
+#include <iostream>
+
+int main()
+{
+    uint16_t net = htons(8080);
+    std::cout << "Converted back: " << ntohs(net) << std::endl;
+    return 0;
+}
+```
+
+### In Webserv
+
+In Webserv, you will use `ntohs()` to:
+✅ **Read port values in your server's internal logic**
+✅ **Convert network input into native usable values**
+✅ **Display correct port numbers in logs and responses**
+
+---
+
+### `ntohl()`
+
+```cpp
+#include <arpa/inet.h>
+
+uint32_t ntohl(uint32_t netlong);
+```
+
+* **netlong**: 32-bit number in network byte order
+
+**Returns**: 32-bit number in host byte order
+
+`ntohl()` (network to host long) is used for converting 32-bit data such as IP addresses back into a usable host format.
+
+### Key Use Cases
+
+* Decoding IP addresses or long fields.
+* Logging and comparing incoming data.
+
+### Example Usage
+
+```cpp
+#include <arpa/inet.h>
+#include <iostream>
+
+int main()
+{
+    uint32_t net_ip = htonl(0xC0A80001);
+    std::cout << "Host order: " << ntohl(net_ip) << std::endl;
+    return 0;
+}
+```
+
+### In Webserv
+
+In Webserv, you will use `ntohl()` to:
+✅ **Interpret 32-bit fields received from the network**
+✅ **Convert IP addresses to human-readable values**
+✅ **Support compatibility with different architectures**
+
+---
+
+
+
 
