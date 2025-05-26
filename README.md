@@ -415,10 +415,6 @@ In Webserv, you will use `errno` to:
 
 ---
 
-Parfait ! Voici la suite de tes fiches Markdown pour le projet `webserv`, toujours au format C++98, avec explications précises et ciblées :
-
----
-
 ### `fork()`
 
 ```cpp
