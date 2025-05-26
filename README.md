@@ -48,15 +48,6 @@ execute the program
 
 ## DOCUMENTATION
 
-Parfait ! Voici les premières fiches pour :
-
-* `execve`
-* `dup`
-* `dup2`
-* `pipe`
-* `strerror`
-* `gai_strerror`
-* `errno`
 
 ---
 
