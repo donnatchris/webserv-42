@@ -97,7 +97,7 @@ This directory contains the following files, written during our research phase b
 - `fichiers_de_config.fr.md` — A breakdown of what must be handled in configuration files for a compliant server
 - `fonctions_doc` — A directory containing files with lists and explanations of all allowed C functions in the project
 - `HTTP1.1.fr.md` — A summarized and accessible version of RFC 2616, which defines the HTTP/1.1 protocol
-- `webserv_doc.fr.md` — A comprehensive overview of all key concepts required for the project
+- `webserv_doc.fr.md` — A comprehensive overview of all key concepts required for the project - You should definitely start here if you re about to do this project
 
 
 If you do not speak French, below is an English summary of the main concepts you need to understand to work on the project:
