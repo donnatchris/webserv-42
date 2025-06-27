@@ -73,23 +73,19 @@ Execute the program with default configuration file:
 
 
 ## ARCHITECTURE:
-- minishell/ directory with the whole project
-	- libft/ directory with the libft (+ get_next_line and ft_printf)
- 	- dclst/ directory with functions and header for using doubly circular linked list
-	- bonus/ directory with files for the bonus part
-		- src/ directory containing the main files of the project
-  			- builtins/ files for builtins commands
-     			- env/ files with functions needed to interact with environment variables
-        		- executor/ files to execute the command line
-          		- lexer/ files for splitting the user input into tokens, store them in a chained list, check the syntax and create a binary tree
-            		- signals/ files for handling signals
-          		- text_transformer/ files for managing '$', '*' and '~'
-		- utils/ directory for secondary files
-		- include/ directory for headers
-	- mandatory/ directory for the mandatory part (empty - everything is in the bonus directory)
-- Makefile (with rules: make bonus clean fclean re)
-- readme.md for quick explanation and main commands of the project
-- valgrind.sup is a file containig a list of readline() leaks to suppress when executing valgring
+
+- `config/` — Contains example configuration files used to test the project.
+- `documentation_fr/` — French-language documentation and technical notes.
+- `include/` — All project header files.
+- `src/` — Source code of the server, organized by responsibility:
+  - `config/` — Classes for parsing and storing configuration data.
+  - `http/` — Classes for parsing HTTP requests and building HTTP responses.
+  - `process/` — Classes for processing client data and handling communication logic.
+  - `server/` — Classes for managing sockets, connections, and the main server loop.
+- `www/` — Contains static files and test websites (HTML, CSS, images, and CGI scripts).
+- `Makefile` — Build system with the following rules: `make`, `bonus`, `clean`, `fclean`, `re`.
+- `README.md` — Overview of the project and key usage instructions.
+
 
 ## ABOUT MY PROJECT:
 
