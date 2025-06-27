@@ -41,6 +41,8 @@ Compile the program and suppress the .o files:
 
 	make && make clean
 
+ ---
+
 Execute the program with default configuration file:
 
 (lanch programm without argumets uses the config/default.conf config file)
@@ -53,7 +55,7 @@ Execute the program with default configuration file:
 
 	http://localhost:8000
 
- 
+ ---
 
  Execute the program with another configuration file
 
