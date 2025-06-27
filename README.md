@@ -1,13 +1,32 @@
-# PROJECT WEBSERV FOR 42
-By chdonnat (Christophe Donnat from 42 Perpignan, France)
+# PROJECT WEBSERV FOR 42  
+By **chdonnat** (Christophe Donnat, 42 Perpignan – France)
 
 ## AIM OF THE PROJECT:
 
+Webserv is a team project (3 team mates) that consists in creating a fully functional HTTP server in C++, compliant with the HTTP/1.1 protocol (RFC 2616).  
+The server must be able to:
+- Parse and apply multiple configuration files
+- Handle GET, POST, and DELETE HTTP methods
+- Serve static files and autoindex directories
+- Execute CGI scripts
+- Manage multiple virtual servers
+- Handle simultaneous connections using `poll()`
 
+The objective is to better understand how web servers work internally, and to apply low-level socket programming and I/O multiplexing in C++98.
 
-### BONUS PART:
+## BONUS PART:
 
+The bonus features implemented in this project include:
+- Cookies and session management
+- Multiple cgi (in our project, we choose python and php cgi)
+These bonuses demonstrate a deeper understanding of the HTTP protocol and its real-world usage in modern web applications.
 
+## WHAT WE MADE BUT WAS NOT MANDATORY NOR BONUS:
+
+As we really enjoyed the project, we also have implemented:
+- Mac and Linux compatibility
+- Support for file uploads via multipart/form-data (but only for one file at a time) so that the server can upload anything (png, pdf, mp3, etc)
+- Communication by chunks of 4096 bytes, even for uploading, to manage memory
 
 ## SOME COMMANDS YOU CAN USE:
 
