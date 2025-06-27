@@ -38,6 +38,7 @@ Since we really enjoyed working on the project, we went further and implemented:
 - Full compatibility with **macOS** and **Linux**
 - File upload support via `multipart/form-data` (limited to one file at a time), enabling uploads of any file type (PNG, PDF, MP3, etc.)
 - Chunked communication (4096-byte blocks), even for uploads, to optimize memory usage
+- A single entry point: the Server communicates with ProcessRequest exclusively via its process() method, handling both incoming data and outgoing responses seamlessly
 - A complete and fun **zombie-themed test website** to demonstrate and validate all features
 - Siege test results (load testing): 100% success over more than 250,000 transactions in 1 minute.
 
