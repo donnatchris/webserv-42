@@ -8,9 +8,6 @@ With teammates: **Olivier Thorel** and **Lucas Matkowski**, also from 42 Perpign
   <img src="https://github.com/donnatchris/webserv/blob/main/screenshots/siege_results.png" width="30%" />
 </p>
 
-
-
-
 ## AIM OF THE PROJECT:
 
 **Webserv** is a team project (3 members) that consists in creating a fully functional HTTP server in C++, compliant with the HTTP/1.1 specification (RFC 2616).  
