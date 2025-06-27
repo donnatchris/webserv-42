@@ -1,32 +1,39 @@
 # PROJECT WEBSERV FOR 42  
-By **chdonnat** (Christophe Donnat, 42 Perpignan – France)
+By **chdonnat** (Christophe Donnat, 42 Perpignan – France)  
+With teammates: **Olivier Thorel** and **Lucas Matkowski**, also from 42 Perpignan – France.
+
 
 ## AIM OF THE PROJECT:
 
-Webserv is a team project (3 team mates) that consists in creating a fully functional HTTP server in C++, compliant with the HTTP/1.1 protocol (RFC 2616).  
+**Webserv** is a team project (3 members) that consists in creating a fully functional HTTP server in C++, compliant with the HTTP/1.1 specification (RFC 2616).  
 The server must be able to:
 - Parse and apply multiple configuration files
-- Handle GET, POST, and DELETE HTTP methods
-- Serve static files and autoindex directories
+- Handle the HTTP methods: GET, POST, and DELETE
+- Serve static files and generate autoindex pages
 - Execute CGI scripts
-- Manage multiple virtual servers
-- Handle simultaneous connections using `poll()`
+- Support multiple virtual servers
+- Handle multiple simultaneous connections using `poll()`
 
-The objective is to better understand how web servers work internally, and to apply low-level socket programming and I/O multiplexing in C++98.
+The goal is to gain a deeper understanding of how web servers work under the hood, and to implement low-level socket programming and I/O multiplexing in C++98.
+
 
 ## BONUS PART:
 
-The bonus features implemented in this project include:
-- Cookies and session management
-- Multiple cgi (in our project, we choose python and php cgi)
-These bonuses demonstrate a deeper understanding of the HTTP protocol and its real-world usage in modern web applications.
+The following bonus features have been implemented:
+- Cookie-based session management
+- Multiple CGI support (in our project: Python and PHP)
 
-## WHAT WE MADE BUT WAS NOT MANDATORY NOR BONUS:
+These bonuses demonstrate a deeper grasp of HTTP mechanisms and reflect how real-world web applications operate.
 
-As we really enjoyed the project, we also have implemented:
-- Mac and Linux compatibility
-- Support for file uploads via multipart/form-data (but only for one file at a time) so that the server can upload anything (png, pdf, mp3, etc)
-- Communication by chunks of 4096 bytes, even for uploading, to manage memory
+
+## WHAT WE'RE PROUD OF:
+
+Since we really enjoyed working on the project, we went further and implemented:
+- Full compatibility with **macOS** and **Linux**
+- File upload support via `multipart/form-data` (limited to one file at a time), enabling uploads of any file type (PNG, PDF, MP3, etc.)
+- Chunked communication (4096-byte blocks), even for uploads, to optimize memory usage
+- A complete and fun **zombie-themed test website** to demonstrate and validate all features
+
 
 ## SOME COMMANDS YOU CAN USE:
 
