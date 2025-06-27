@@ -132,6 +132,53 @@ Shortest transaction:	        0.00 ms
 - `README.md` — Overview of the project and key usage instructions.
 
 
+### Classes and Responsibilities
+
+Webserv is structured around modular, single-responsibility classes that work together to handle HTTP requests efficiently:
+
+- **`Server`**  
+  The entry point of the server. It opens the listening sockets, manages connections, and drives the main event loop using a multiplexing mechanism (`poll`, `epoll`, etc.). It interacts with each client through the `ProcessRequest::process()` method.
+
+- **`PollManager`**  
+  A wrapper around the OS-level multiplexing API (`poll`, `kqueue`, etc.). It abstracts file descriptor registration, event readiness (POLLIN/POLLOUT), and event dispatching, ensuring efficient non-blocking I/O.
+
+- **`Connection`**  
+  Represents a client connection. It stores the client socket, tracks its read/write state, and delegates data handling to a `ProcessRequest` instance.
+
+- **`ProcessRequest`**  
+  Central to request handling. It exposes a single interface `process()` used by the server both when receiving and sending data. It orchestrates parsing, logic dispatching, CGI execution, and response preparation.
+
+- **`RequestParser`**  
+  Transforms raw data into a valid `HttpRequest` object. It handles headers, chunked transfer encoding, `Content-Length`, and invalid input gracefully.
+
+- **`HttpRequest`**  
+  Holds a fully parsed HTTP request: method, URI, headers, and optional body. Used by `ProcessRequest` to make routing and logic decisions.
+
+- **`HttpResponse`**  
+  Builds the HTTP response line-by-line: status, headers, and body. It supports content types, content-length, redirection, and error formatting.
+
+- **`ResponseBuilder`**  
+  (Legacy / helper) Assists in constructing HTTP responses before being replaced or integrated into `ProcessRequest` for final formatting.
+
+- **`CGIHandler`**  
+  Executes CGI scripts (e.g., Python, PHP). It sets up environment variables, manages pipes and I/O redirection, and reads the script output to build a valid HTTP response.
+
+- **`File`**  
+  Manages file access on disk. Validates permissions, determines MIME types, and handles chunked reads/writes for efficient file serving.
+
+- **`ConfigParser`**  
+  Reads and tokenizes the `.conf` file. It extracts blocks (`server`, `location`) and directives (`listen`, `root`, etc.) into an internal structure.
+
+- **`ConfigValidator`**  
+  Checks the parsed config for semantic correctness: valid IPs, ports, duplicates, missing directives, and structural integrity.
+
+- **`ServerConfig` / `Location`**  
+  Represent the hierarchical configuration of the server. `ServerConfig` holds global and per-server settings; `Location` defines path-specific overrides and behaviors.
+
+- **`HttpErrorException`**  
+  A custom exception used to signal HTTP-level errors during request processing (e.g., 404 Not Found, 405 Method Not Allowed), enabling clean error handling and response generation.
+
+
 ## DOCUMENTATION
 
 Unlike most of my projects, you’ll find **French-language documentation and technical notes** inside the `documentation_fr/` directory.
