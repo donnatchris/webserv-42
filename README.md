@@ -84,6 +84,7 @@ Execute the program with default configuration file:
 - `config/` — Contains example configuration files used to test the project.
 - `documentation_fr/` — French-language documentation and technical notes.
 - `include/` — All project header files.
+- `screenshots` - Screenshots of the project
 - `src/` — Source code of the server, organized by responsibility:
   - `config/` — Classes for parsing and storing configuration data.
   - `http/` — Classes for parsing HTTP requests and building HTTP responses.
