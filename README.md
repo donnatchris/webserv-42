@@ -11,18 +11,38 @@ By chdonnat (Christophe Donnat from 42 Perpignan, France)
 
 ## SOME COMMANDS YOU CAN USE:
 
-compile the program and suppress the .o files:
+Compile the program and suppress the .o files:
 
 	make && make clean
 
-execute the program with default configuration file:
+Execute the program with default configuration file:
+
 (lanch programm without argumets uses the config/default.conf config file)
 
 	./webserv webserv.conf
 
- execute the program with another configuration file
+ With that configuration file, you can now test a website we have created to test the whole project:
+
+ In your favorite browser type:
+
+	http://localhost:8000
+
+ 
+
+ Execute the program with another configuration file
 
 	./webserv config/
+
+ With that configuration file, you can now test 3 virtual servers, each with its own website for testing.
+
+  In your favorite browser type:
+
+	http://localhost:8000
+
+ 	http://localhost:80808
+
+  	http://localhost:8888
+
 
 ## ARCHITECTURE:
 - minishell/ directory with the whole project
