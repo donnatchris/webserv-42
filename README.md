@@ -96,8 +96,8 @@ Siege will follow those links and send requests to third-party servers, which is
 
 > For our Webserv, when using the config file config/webserv.conf, be sure to test only the server on port 8888, as port 8000 may include external links to Google servers (for fonts).
 
-Here are some results of load testing our webserv:
-
+**We put Webserv to the test with heavy traffic — and it delivered. See the results below:
+**
 ```
 Lifting the server siege...
 Transactions:		   262650    hits
