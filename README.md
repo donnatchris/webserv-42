@@ -3,10 +3,11 @@ By **chdonnat** (Christophe Donnat, 42 Perpignan – France)
 With teammates: **Olivier Thorel** and **Lucas Matkowski**, also from 42 Perpignan – France.
 
 <p align="center">
-  <img src="https://github.com/donnatchris/webserv/blob/main/screenshots/index.png" height="200px" />
-  <img src="https://github.com/donnatchris/webserv/blob/main/screenshots/webserv.png" height="200px" />
-  <img src="https://github.com/donnatchris/webserv/blob/main/screenshots/siege_results.png" height="200px" />
+  <img src="https://github.com/donnatchris/webserv/blob/main/screenshots/index.png" width="30%" height="200px" />
+  <img src="https://github.com/donnatchris/webserv/blob/main/screenshots/webserv.png" width="30%" height="200px" />
+  <img src="https://github.com/donnatchris/webserv/blob/main/screenshots/siege_results.png" width="30%" height="200px" />
 </p>
+
 
 ## AIM OF THE PROJECT:
 
