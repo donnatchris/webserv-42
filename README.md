@@ -39,6 +39,7 @@ Since we really enjoyed working on the project, we went further and implemented:
 - File upload support via `multipart/form-data` (limited to one file at a time), enabling uploads of any file type (PNG, PDF, MP3, etc.)
 - Chunked communication (4096-byte blocks), even for uploads, to optimize memory usage
 - A complete and fun **zombie-themed test website** to demonstrate and validate all features
+- Siege test results (load testing): 100% success over more than 250,000 transactions in 1 minute.
 
 
 ## SOME COMMANDS YOU CAN USE:
@@ -76,6 +77,24 @@ Execute the program with default configuration file:
  	http://localhost:80808
 
   	http://localhost:8888
+
+## Load Testing with Siege
+
+Load testing is a method used to evaluate how a web server performs under high traffic.
+It simulates many clients making requests at once to check the server’s stability, response time, and throughput.
+Siege is a popular command-line tool for performing such tests.
+It’s free and available on most systems — you can install it using a package manager like brew install siege (macOS) or sudo apt install siege (Linux).
+
+A basic command to launch a load test on our server would be (in another terminal while the server is runnng):
+
+```bash
+siege -v http://localhost:8888
+```
+
+**Warning**: Make sure you're testing a server that doesn't contain external links (e.g., Google Fonts or CDN resources).
+Siege will follow those links and send requests to third-party servers, which is not only inappropriate (and potentially illegal), but it will also cause failed transactions unrelated to your own server.
+
+> For our Webserv, when using the config file config/webserv.conf, be sure to test only the server on port 8888, as port 8000 may include external links to Google servers (for fonts).
 
 
 ## ARCHITECTURE:
