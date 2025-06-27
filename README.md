@@ -79,7 +79,7 @@ Execute the program with default configuration file:
 
   	http://localhost:8888
 
-## Load Testing with Siege
+## LOAD TESTING WITH SIEGE
 
 Load testing is a method used to evaluate how a web server performs under high traffic.
 It simulates many clients making requests at once to check the server’s stability, response time, and throughput.
@@ -132,7 +132,7 @@ Shortest transaction:	        0.00 ms
 - `README.md` — Overview of the project and key usage instructions.
 
 
-### Classes and Responsibilities
+## CLASSES AND RESPONSABILITIES
 
 Webserv is structured around modular, single-responsibility classes that work together to handle HTTP requests efficiently:
 
