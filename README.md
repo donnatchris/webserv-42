@@ -96,6 +96,24 @@ Siege will follow those links and send requests to third-party servers, which is
 
 > For our Webserv, when using the config file config/webserv.conf, be sure to test only the server on port 8888, as port 8000 may include external links to Google servers (for fonts).
 
+Here are some results of load testing our webserv:
+
+```
+Lifting the server siege...
+Transactions:		   262650    hits
+Availability:		      100.00 %
+Elapsed time:		       60.98 secs
+Data transferred:	      399.02 MB
+Response time:		        5.77 ms
+Transaction rate:	     4307.15 trans/sec
+Throughput:		        6.54 MB/sec
+Concurrency:		       24.86
+Successful transactions:   262650
+Failed transactions:	        0
+Longest transaction:	       40.00 ms
+Shortest transaction:	        0.00 ms
+```
+
 
 ## ARCHITECTURE:
 
