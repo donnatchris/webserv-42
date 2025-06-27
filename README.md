@@ -3,8 +3,9 @@ By **chdonnat** (Christophe Donnat, 42 Perpignan – France)
 With teammates: **Olivier Thorel** and **Lucas Matkowski**, also from 42 Perpignan – France.
 
 <p align="center">
-  <img src="https://github.com/donnatchris/webserv/blob/main/screenshots/index.png" width="45%" />
-  <img src="https://github.com/donnatchris/webserv/blob/main/screenshots/webserv.png" width="45%" />
+  <img src="https://github.com/donnatchris/webserv/blob/main/screenshots/index.png" width="30%" />
+  <img src="https://github.com/donnatchris/webserv/blob/main/screenshots/webserv.png" width="30%" />
+  <img src="https://github.com/donnatchris/webserv/blob/main/screenshots/siege_results.png" width="30%" />
 </p>
 
 
