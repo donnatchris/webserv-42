@@ -15,13 +15,14 @@ compile the program and suppress the .o files:
 
 	make && make clean
 
-execute the program
+execute the program with default configuration file:
+(lanch programm without argumets uses the config/default.conf config file)
 
-	./webserv <configuration_file>
+	./webserv webserv.conf
 
- execute the program with valgrind
+ execute the program with another configuration file
 
-	make val
+	./webserv config/
 
 ## ARCHITECTURE:
 - minishell/ directory with the whole project
