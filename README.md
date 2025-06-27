@@ -3,7 +3,7 @@ By **chdonnat** (Christophe Donnat, 42 Perpignan – France)
 With teammates: **Olivier Thorel** and **Lucas Matkowski**, also from 42 Perpignan – France.
 
 <p align="center">
-  <img src="https://github.com/donnatchris/Webserv/documentation_fr/index.png" />
+  <img src="https://github.com/donnatchris/webserv/documentation_fr/index.png" />
 </p>
 
 ## AIM OF THE PROJECT:
