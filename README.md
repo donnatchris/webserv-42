@@ -6,7 +6,7 @@ With teammates: **Olivier Thorel** and **Lucas Matkowski**, also from 42 Perpign
   <img src="https://github.com/donnatchris/webserv/blob/main/screenshots/index.png" />
 </p>
 <p align="center">
-  <img src="https://github.com/donnatchris/webserv/screenshots/webserv.png" />
+  <img src="https://github.com/donnatchris/webserv/blob/main/screenshots/webserv.png" />
 </p>
 
 
