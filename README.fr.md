@@ -8,7 +8,7 @@ Avec mes co-équipiers : **Olivier Thorel** et **Lucas Matkowski**, également d
 <p align="center">
   <img src="https://github.com/donnatchris/webserv/blob/main/screenshots/index.png" width="30%" height="200px" />
   <img src="https://github.com/donnatchris/webserv/blob/main/screenshots/webserv.png" width="30%" height="200px" />
-  <img src="https://github.com/donnatchris/webserv/blob/main/screenshots/siege_results.png" width="27%" height="200px" />
+  <img src="https://github.com/donnatchris/webserv/blob/main/screenshots/siege_results.png" width="25%" height="200px" />
 </p>
 
 
