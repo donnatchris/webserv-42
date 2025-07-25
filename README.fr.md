@@ -178,6 +178,7 @@ Webserv est structuré autour de classes modulaires à responsabilité unique qu
 - **`HttpErrorException`**
   Une exception personnalisée utilisée pour signaler les erreurs au niveau HTTP pendant le traitement des requêtes (par exemple, 404 Not Found, 405 Method Not Allowed), permettant une gestion propre des erreurs et la génération de réponses.
 
+---
 
 ## DOCUMENTATION
 
@@ -192,7 +193,7 @@ Ce répertoire contient les fichiers suivants, rédigés pendant notre phase de 
 - `webserv_doc.fr.md` — Un aperçu complet de tous les concepts clés requis pour le projet - Vous devriez absolument commencer par ici si vous êtes sur le point de réaliser ce projet.
 
 
-Si vous ne parlez pas français, vous trouverez ci-dessous un résumé en anglais des principaux concepts que vous devez comprendre pour travailler sur le projet. La suite de ce document est donc une traduction et un résumé en français de ces concepts.
+Vous trouverez ci-dessous un résumé des principaux concepts que vous devez comprendre pour travailler sur le projet. La suite de ce document constitue un résumé de ces fichiers.
 
 ---
 
