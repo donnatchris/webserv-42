@@ -84,7 +84,7 @@ Execute the program with default configuration file:
 Load testing is a method used to evaluate how a web server performs under high traffic.
 It simulates many clients making requests at once to check the server’s stability, response time, and throughput.
 Siege is a popular command-line tool for performing such tests.
-It’s free and available on most systems — you can install it using a package manager like brew install siege (macOS) or sudo apt install siege (Linux).
+It’s free and available on most systems — you can install it using a package manager like `brew install siege` (macOS) or `sudo apt install siege` (Linux).
 
 A basic command to launch a load test on our server would be (in another terminal while the server is runnng):
 
