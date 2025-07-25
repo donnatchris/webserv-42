@@ -1,9 +1,9 @@
+##### [🇫🇷 Version française](README.fr.md) / [🇬🇧 English version](README.md)
+
 # PROJET WEBSERV POUR 42
 Par **chdonnat** (Christophe Donnat, 42 Perpignan – France)
 
 Avec mes co-équipiers : **Olivier Thorel** et **Lucas Matkowski**, également de 42 Perpignan – France.
-
-[🇬🇧 Go to the English version](README.md)
 
 <p align="center">
   <img src="https://github.com/donnatchris/webserv/blob/main/screenshots/index.png" width="30%" height="200px" />
